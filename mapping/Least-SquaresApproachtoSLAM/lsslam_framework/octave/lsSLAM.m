@@ -24,7 +24,7 @@ printf('Initial error %f\n', compute_global_error(g));
 numIterations = 100;
 
 % maximum allowed dx
-EPSILON = 10^-2;
+EPSILON = 10^-4;
 
 % Error
 err = 0;
