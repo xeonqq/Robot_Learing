@@ -30,9 +30,12 @@ def sqr_error(odo, scan_match):
 A = np.transpose(odo_raw).dot(odo_raw)
 calibration_mat = np.empty((3,3))
 
-for i in range(3):
-    b = np.transpose(odo_raw).dot(scan_match[:,i])
-    calibration_mat[i,:] = np.linalg.inv(A).dot(b)
+#for i in range(3):
+#    b = np.transpose(odo_raw).dot(scan_match[:,i])
+#    calibration_mat[i,:] = np.linalg.inv(A).dot(b)
+B = np.transpose(odo_raw).dot(scan_match)
+calibration_mat = np.linalg.inv(A).dot(B)
+calibration_mat = calibration_mat.T
 
 print("calibration mat: ", calibration_mat)
 print("error before calibration: ", sqr_error(odo_raw, scan_match))
